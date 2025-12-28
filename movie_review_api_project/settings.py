@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #for 3rd party apps
+    'rest_framework',
+    'rest.framework.authtoken',
+    'corsheaders',
+    #for local apps
+    'reviews',
 ]
 
 MIDDLEWARE = [
@@ -47,8 +53,21 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
+#add rest framework settings
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAUKT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE':10
+}
 ROOT_URLCONF = 'movie_review_api_project.urls'
 
 TEMPLATES = [
@@ -68,6 +87,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'movie_review_api_project.wsgi.application'
 
+#CORS settings (adjust for prod)
+CORS_ALLOW_ALL_ORIGINS = True #change in prod
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
