@@ -10,3 +10,10 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-creatd_date'] #newset review first
+        unique_together = ['movie_title','user'] #one review per movie per user
+
+    def __str__(self):
+        return f"{self.user.username} - {self.movie_title} ({self.rating}/5)"
