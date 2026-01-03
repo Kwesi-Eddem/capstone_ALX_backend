@@ -6,4 +6,4 @@ from .models import Review
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('movie_title','rating','user','created_at')
     search_fields = ('movie_title',"review_content")
-    list_filter = ('rating','created-at')
+    list_filter = ('rating','created_at')
