@@ -17,7 +17,7 @@ Create Virtual Environment
 python -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 
-## Install Dependencies
+### 2. Install Dependencies
 
 pip install -r requirements.txt
 
@@ -101,9 +101,9 @@ Log in at: http://127.0.0.1:8000/api-auth/login/
 /api/reviews/	POST	Create review (auth required)
 /api/reviews/{id}/	PUT/PATCH	Update own review
 /api/reviews/{id}/	DELETE	Delete own review
-/api/reviews/?movie_title=Matrix	GET	Filter reviews by movie
+/api/reviews/?movie_title=movie_title	GET	Filter reviews by movie
 /api/reviews/?rating=5	GET	Filter reviews by rating
-/api/reviews/?search=Inception	GET	Search reviews
+/api/reviews/?search=movie_title	GET	Search reviews
 /api/reviews/?ordering=-created_at	GET	Sort reviews
 
 
